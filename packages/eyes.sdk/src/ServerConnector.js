@@ -412,7 +412,7 @@
                         reasonMsg += ` (${err.response.statusMessage})`;
                     }
 
-                    that._logger.log(`ServerConnector.${name} - ${method} failed on ${uri}: ${reasonMsg} with params ${JSON.stringify(options.query).slice(0, 100)}`);
+                    that._logger.log(`ServerConnector.${name} - ${method} failed on ${uri}: ${reasonMsg} with params ${(JSON.stringify(options.query) || '').slice(0, 100)}`);
                     that._logger.verbose(`ServerConnector.${name} - failure body:\n${err.response && err.response.data}`);
 
                     if (retry > 0 && ((err.response && HTTP_FAILED_CODES.includes(err.response.status)) || REQUEST_FAILED_CODES.includes(err.code))) {
